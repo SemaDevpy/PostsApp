@@ -26,16 +26,40 @@ class SecondViewController: UIViewController{
         commentManager.fetchComments(by: postID)
     }
     
+    @IBAction func addPressed(_ sender: UIBarButtonItem) {
+        showAlert()
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func showAlert(){
+        let alertView = UIAlertController(title: "Добавить комментарий", message: "", preferredStyle: .alert)
+        
+        alertView.addTextField(configurationHandler: nil)
+        alertView.addTextField(configurationHandler: nil)
+        alertView.addTextField(configurationHandler: nil)
+        
+        alertView.textFields![0].placeholder = "Введите заглавие комментария"
+        alertView.textFields![1].placeholder = "Введите вашу почту"
+        alertView.textFields![2].placeholder = "Введите комментарий"
+        
+        alertView.addAction(UIAlertAction(title: "Добавить", style: .default, handler: { (_) in
+            let theme = alertView.textFields![0].text!
+            let email = alertView.textFields![1].text!
+            let comment = alertView.textFields![2].text!
+            var newComment = CommentModel(comName: theme, comEmail: email, comBody: comment)
+            self.commntsList.append(newComment)
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                let indexPath = IndexPath(row: self.commntsList.count - 1, section: 0)
+                self.table.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+            
+        }
+            )
+        )
+        
+        
+        self.present(alertView, animated: true, completion: nil)
+    }
     
 }
 
@@ -48,7 +72,7 @@ extension SecondViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.secondVC.cellIdentifier, for: indexPath)
-        cell.textLabel?.text = "Theme: \(commntsList[indexPath.row].comName)\nby: \(commntsList[indexPath.row].comEmail))"
+        cell.textLabel?.text = "Заглавие: \(commntsList[indexPath.row].comName)\nОт: \(commntsList[indexPath.row].comEmail)"
         cell.detailTextLabel?.text = "\(commntsList[indexPath.row].comBody)"
         return cell
     }

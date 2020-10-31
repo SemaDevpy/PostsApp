@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Posts-->
+        <!--Посты-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="PostsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,6 +42,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96509486440000003" green="0.9574407935" blue="0.90353304150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -55,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Posts" id="0dl-AT-ZVf"/>
+                    <navigationItem key="navigationItem" title="Посты" id="0dl-AT-ZVf"/>
                     <connections>
                         <outlet property="table" destination="bHB-K7-aSv" id="m9f-ek-iBb"/>
                         <segue destination="nsd-5u-Nzd" kind="show" identifier="goToComments" id="xD8-A3-K9v"/>
@@ -65,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="112.5"/>
         </scene>
-        <!--Comments-->
+        <!--Комментарии-->
         <scene sceneID="YTU-bT-8U5">
             <objects>
                 <viewController id="nsd-5u-Nzd" customClass="SecondViewController" customModule="PostsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dkz-6l-seV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="secondCell" textLabel="cei-t6-O82" detailTextLabel="Ebh-W9-nTz" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="YV8-Te-UGU">
@@ -100,20 +101,40 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96509486440000003" green="0.9574407935" blue="0.90353304150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-ac-2a4">
+                                <rect key="frame" x="0.0" y="812" width="414" height="84"/>
+                                <color key="backgroundColor" red="0.89824694400000005" green="0.77491778140000001" blue="0.71056395770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aIj-T7-fgd"/>
+                                    <barButtonItem title="+ Добавить комментарий" style="done" id="OL0-4q-jqt">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="addPressed:" destination="nsd-5u-Nzd" id="cSK-sL-mJr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L9g-bf-R8w"/>
+                                </items>
+                                <color key="barTintColor" red="0.46420580150000001" green="0.56475871799999999" blue="0.5146484375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rqp-Uq-Rzm" firstAttribute="bottom" secondItem="dkz-6l-seV" secondAttribute="bottom" id="01B-05-e5d"/>
+                            <constraint firstItem="rqp-Uq-Rzm" firstAttribute="bottom" secondItem="dkz-6l-seV" secondAttribute="bottom" constant="50" id="01B-05-e5d"/>
                             <constraint firstItem="rqp-Uq-Rzm" firstAttribute="trailing" secondItem="dkz-6l-seV" secondAttribute="trailing" id="7K1-wv-672"/>
                             <constraint firstItem="dkz-6l-seV" firstAttribute="top" secondItem="rqp-Uq-Rzm" secondAttribute="top" id="C3y-Lr-xpn"/>
+                            <constraint firstAttribute="bottom" secondItem="N0b-ac-2a4" secondAttribute="bottom" id="DAk-Xh-Mqi"/>
+                            <constraint firstItem="N0b-ac-2a4" firstAttribute="trailing" secondItem="rqp-Uq-Rzm" secondAttribute="trailing" id="DWv-ln-iKo"/>
+                            <constraint firstItem="N0b-ac-2a4" firstAttribute="leading" secondItem="rqp-Uq-Rzm" secondAttribute="leading" id="Edl-xV-rQV"/>
                             <constraint firstItem="dkz-6l-seV" firstAttribute="leading" secondItem="rqp-Uq-Rzm" secondAttribute="leading" id="Rgi-LP-Gee"/>
+                            <constraint firstItem="N0b-ac-2a4" firstAttribute="top" secondItem="dkz-6l-seV" secondAttribute="bottom" id="lUr-dP-fyA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rqp-Uq-Rzm"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Comments" id="rPf-2V-SMT"/>
+                    <navigationItem key="navigationItem" title="Комментарии" id="rPf-2V-SMT"/>
                     <connections>
                         <outlet property="table" destination="dkz-6l-seV" id="8Zp-fn-QDX"/>
                     </connections>
