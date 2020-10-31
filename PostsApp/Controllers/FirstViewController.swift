@@ -64,4 +64,12 @@ extension FirstViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.segue, sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! SecondViewController
+        if let indexPath = table.indexPathForSelectedRow{
+            destinationVC.postID = postsList[indexPath.row].postId
+        }
+      }
+    
 }
